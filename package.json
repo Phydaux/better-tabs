@@ -5,7 +5,7 @@
   "description": "Better than regular tabs",
   "keywords": [
   ],
-  "activationCommands": {
+  "x-activationCommands": {
     "atom-workspace": "better-tabs:toggle"
   },
   "repository": "https://github.com/atom/better-tabs",

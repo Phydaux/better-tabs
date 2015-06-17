@@ -1,5 +1,10 @@
 # better-tabs package
 
-A short description of your package.
+Better than regular tabs (when it works)
 
-![A screenshot of your package](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif)
+### Todo
+* Switch to active pane on loading
+* Better scrolling into view
+* Add less for fixed tab width
+* MRU list shows while switching tabs
+* Colour highlighting in MRU list
