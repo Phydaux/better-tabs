@@ -56,7 +56,7 @@ module.exports = BetterTabs =
                         tabBarElement.scrollLeft = ((tabElement.offsetLeft + tabElement.offsetWidth) - tabBarElement.offsetWidth) + 20
 
     _getItemIndex: (item) ->
-        items = atom.workspace.getPaneItems()
+        items = atom.workspace.getActivePane().getItems()
         items.indexOf item
 
     _tabIsVisible: (tab) ->
