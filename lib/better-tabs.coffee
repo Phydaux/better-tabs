@@ -49,9 +49,29 @@ module.exports = BetterTabs =
         if tabBarElement isnt null
             tabElement = tabBarElement.children[index]
             if tabElement
-                tabElement.scrollIntoView(false)
-                tabBarElement.scrollLeft = tabElement.offsetLeft - 20 # TODO: Or whatever the tab ::before thing is
+                switch @_tabIsVisible(tabElement)
+                    when 'RIGHT_ONLY'
+                        tabBarElement.scrollLeft = tabElement.offsetLeft - 20 # TODO: Or whatever the tab ::before thing is
+                    when 'LEFT_ONLY'
+                        tabBarElement.scrollLeft = ((tabElement.offsetLeft + tabElement.offsetWidth) - tabBarElement.offsetWidth) + 20
 
     _getItemIndex: (item) ->
         items = atom.workspace.getPaneItems()
         items.indexOf item
+
+    _tabIsVisible: (tab) ->
+        tabBarElement = @_getTabBarElement()
+        leftVisible = tabBarElement.scrollLeft < (tab.offsetLeft - 20)
+
+        rightOfBar = tabBarElement.offsetWidth + tabBarElement.scrollLeft
+        rightOfTab = tab.offsetWidth + tab.offsetLeft
+        rightVisible = rightOfBar > rightOfTab
+
+        if leftVisible and rightVisible
+            'VISIBLE'
+        else if leftVisible
+            'LEFT_ONLY'
+        else if rightVisible
+            'RIGHT_ONLY'
+        else
+            'NOT_VISIBLE' # TODO: It's never this value
