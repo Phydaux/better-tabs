@@ -6,3 +6,18 @@
 
 .better-tabs {
 }
+
+ul.tab-bar .tab {
+    min-width: 160px;
+}
+
+/* Fix the border between the workspace and the tabs
+    (the bit that matches the tab highlight)
+    so when tabs are scrolled, it doesn't disappear */
+ul.tab-bar:after {
+    position: fixed;
+    top: 32px;
+}
+.tool-panel {
+    z-index: 1;
+}
