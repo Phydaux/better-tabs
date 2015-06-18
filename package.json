@@ -8,7 +8,7 @@
   "x-activationCommands": {
     "atom-workspace": "better-tabs:toggle"
   },
-  "repository": "https://github.com/atom/better-tabs",
+  "repository": "https://github.com/Phydaux/better-tabs",
   "license": "MIT",
   "engines": {
     "atom": ">=0.174.0 <2.0.0"
