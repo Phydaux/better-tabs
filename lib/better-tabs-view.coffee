@@ -28,7 +28,9 @@ class BetterTabsView
         @_removeItems()
 
         docs = atom.workspace.getPaneItems()
+        pathRepo = @_getRepo()
         for doc in docs
+            repoStatus = pathRepo.getPathStatus(doc.getPath?())
             # console.log doc.getTitle()
             # @_addItem 'test'
             liElm = @_addItem "#{doc.getTitle()} - #{doc.getGrammar?()?.name}"
@@ -37,6 +39,12 @@ class BetterTabsView
             # console.log "#{doc.getTitle()} doc.isModified? #{doc.isModified?()}"
             if doc.isModified?()
                 liElm.classList.add('modified')
+
+            if pathRepo.isStatusModified(repoStatus)
+                liElm.classList.add('status-modified')
+
+            if pathRepo.isStatusNew(repoStatus)
+                liElm.classList.add('status-new')
         #getGrammar
         #getLongTitle
         #getTitle
@@ -52,3 +60,13 @@ class BetterTabsView
     _removeItems: ->
         while @ulEl.firstChild
             @ulEl.removeChild @ulEl.firstChild
+
+    # From: https://github.com/atom/tree-view/blob/master/lib/helpers.coffee
+    # _repoForPath: (goalPath) ->
+    #     for projectPath, i in atom.project.getPaths()
+    #       if goalPath is projectPath or goalPath.indexOf(projectPath + require('path').sep) is 0
+    #         return atom.project.getRepositories()[i]
+    #     null
+
+    _getRepo: ->
+        atom.project.getRepositories()[0]
