@@ -56,7 +56,10 @@ class BetterTabsView
                 liElm.classList.add('status-modified')
 
             if pathRepo.isStatusNew(repoStatus)
-                liElm.classList.add('status-new')
+                liElm.classList.add('status-added')
+
+            if repoStatus is 4
+                liElm.classList.add('status-removed')
 
             if doc is activeItem
                 liElm.classList.add('active')
