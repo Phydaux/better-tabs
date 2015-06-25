@@ -34,8 +34,12 @@ class BetterTabsView
             repoStatus = pathRepo.getPathStatus(doc.getPath?())
 
             itemText = doc.getTitle()
+            
             grammar = doc.getGrammar?()?.name
             if grammar
+                if grammar is 'Null Grammar'
+                    grammar = 'Plain Text'
+
                 itemText += " - #{grammar}"
 
             liElm = @_addItem itemText
