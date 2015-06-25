@@ -32,12 +32,23 @@ class BetterTabsView
         pathRepo = @_getRepo()
         for doc in docs
             repoStatus = pathRepo.getPathStatus(doc.getPath?())
-            # console.log doc.getTitle()
-            # @_addItem 'test'
-            liElm = @_addItem "#{doc.getTitle()} - #{doc.getGrammar?()?.name}"
-            # console.log doc.getGrammar?()
-            # console.log "doc.getGrammar? #{doc.getGrammar?} #{doc.getGrammar?()}" asdasda
-            # console.log "#{doc.getTitle()} doc.isModified? #{doc.isModified?()}"
+
+            itemText = doc.getTitle()
+            grammar = doc.getGrammar?()?.name
+            if grammar
+                itemText += " - #{grammar}"
+
+            liElm = @_addItem itemText
+
+            liElm.classList.add('icon')
+            switch doc.uri
+                when 'atom://release-notes'
+                    liElm.classList.add('icon-squirrel')
+                when 'atom://config'
+                    liElm.classList.add('icon-tools')
+                else
+                    liElm.classList.add('icon-file-text') # TODO: Change this depending on file type!
+
             if doc.isModified?()
                 liElm.classList.add('modified')
 

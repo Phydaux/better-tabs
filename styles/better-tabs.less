@@ -5,21 +5,30 @@
 @import "ui-variables";
 
 .better-tabs {
+    li {
+        list-style-type: none;
+    }
+
+    li.modified:before {
+        color: @background-color-info;
+    }
+
+    li.active {
+        color: @text-color-selected;
+        background-color: @background-color-selected;
+        text-shadow: none;
+    }
+
+    .icon:before {
+        // font-size: inherit;
+        // width: inherit;
+        // height: inherit;
+        text-align: center;
+    }
 }
 
 ul.tab-bar .tab {
     min-width: 160px;
-}
-
-.better-tabs li.modified {
-    font-style: italic;
-    list-style-type: circle;
-}
-
-.better-tabs li.active {
-    color: @text-color-selected;
-    background-color: @background-color-selected;
-    text-shadow: none;
 }
 
 /* Fix the border between the workspace and the tabs
