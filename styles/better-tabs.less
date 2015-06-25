@@ -5,8 +5,13 @@
 @import "ui-variables";
 
 .better-tabs {
+    ul {
+        padding: 0;
+    }
+
     li {
         list-style-type: none;
+        padding-left: 0.5em;
     }
 
     li.modified:before {
@@ -14,8 +19,7 @@
     }
 
     li.active {
-        color: @text-color-selected;
-        background-color: @background-color-selected;
+        background-color: @background-color-highlight;
         text-shadow: none;
     }
 
@@ -24,6 +28,10 @@
         // width: inherit;
         // height: inherit;
         text-align: center;
+    }
+
+    li.active.status-modified {
+        color: darken(@text-color-modified, 15%);
     }
 }
 
