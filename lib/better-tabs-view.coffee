@@ -28,6 +28,7 @@ class BetterTabsView
         @_removeItems()
 
         docs = atom.workspace.getPaneItems()
+        activeItem = atom.workspace.getActivePaneItem()
         pathRepo = @_getRepo()
         for doc in docs
             repoStatus = pathRepo.getPathStatus(doc.getPath?())
@@ -45,6 +46,9 @@ class BetterTabsView
 
             if pathRepo.isStatusNew(repoStatus)
                 liElm.classList.add('status-new')
+
+            if doc is activeItem
+                liElm.classList.add('active')
         #getGrammar
         #getLongTitle
         #getTitle

@@ -16,6 +16,12 @@ ul.tab-bar .tab {
     list-style-type: circle;
 }
 
+.better-tabs li.active {
+    color: @text-color-selected;
+    background-color: @background-color-selected;
+    text-shadow: none;
+}
+
 /* Fix the border between the workspace and the tabs
     (the bit that matches the tab highlight)
     so when tabs are scrolled, it doesn't disappear */
