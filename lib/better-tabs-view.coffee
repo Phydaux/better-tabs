@@ -34,7 +34,7 @@ class BetterTabsView
             repoStatus = pathRepo.getPathStatus(doc.getPath?())
 
             itemText = doc.getTitle()
-            
+
             grammar = doc.getGrammar?()?.name
             if grammar
                 if grammar is 'Null Grammar'
@@ -45,13 +45,18 @@ class BetterTabsView
             liElm = @_addItem itemText
 
             liElm.classList.add('icon')
-            switch doc.uri
-                when 'atom://release-notes'
+            itemType = doc.constructor.toString().split('(')[0].substr 9
+            switch itemType
+                when 'ReleaseNotesView'
                     liElm.classList.add('icon-squirrel')
-                when 'atom://config'
+                when 'SettingsView'
                     liElm.classList.add('icon-tools')
+                when 'ImageEditor'
+                    liElm.classList.add('icon-file-media')
+                when 'TextEditor'
+                    liElm.classList.add('icon-file-text')
                 else
-                    liElm.classList.add('icon-file-text') # TODO: Change this depending on file type!
+                    liElm.classList.add('icon-primitive-dot')
 
             if doc.isModified?()
                 liElm.classList.add('modified')
