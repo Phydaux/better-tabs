@@ -55,6 +55,8 @@ class BetterTabsView
                     liElm.classList.add('icon-file-media')
                 when 'TextEditor'
                     liElm.classList.add('icon-file-text')
+                when 'ResultsPaneView'
+                    liElm.classList.add('icon-search')
                 else
                     liElm.classList.add('icon-primitive-dot')
 
