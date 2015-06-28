@@ -84,9 +84,10 @@ class BetterTabsView
     _addItem: (name, grammar) ->
         newLi = document.createElement('li')
         newLi.textContent = name
+        
         if grammar
-            console.log newLi
             newLi.innerHTML += "<span style='float: right'>#{grammar}</span>"
+
         @ulEl.appendChild(newLi)
         return newLi
 
