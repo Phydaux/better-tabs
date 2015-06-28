@@ -33,16 +33,17 @@ class BetterTabsView
         for doc in docs
             repoStatus = pathRepo.getPathStatus(doc.getPath?())
 
-            itemText = doc.getTitle()
+            itemTitle = doc.getTitle()
+            itemGrammar = ''
 
             grammar = doc.getGrammar?()?.name
             if grammar
                 if grammar is 'Null Grammar'
                     grammar = 'Plain Text'
 
-                itemText += " - #{grammar}"
+                itemGrammar = "#{grammar}"
 
-            liElm = @_addItem itemText
+            liElm = @_addItem itemTitle, itemGrammar
 
             liElm.classList.add('icon')
             itemType = doc.constructor.toString().split('(')[0].substr 9
@@ -80,9 +81,12 @@ class BetterTabsView
         #getURI
         #isModified
 
-    _addItem: (name) ->
+    _addItem: (name, grammar) ->
         newLi = document.createElement('li')
         newLi.textContent = name
+        if grammar
+            console.log newLi
+            newLi.innerHTML += "<span style='float: right'>#{grammar}</span>"
         @ulEl.appendChild(newLi)
         return newLi
 
