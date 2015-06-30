@@ -75,6 +75,9 @@ class BetterTabsView
 
             if doc is activeItem
                 liElm.classList.add('active')
+
+            if doc.findMarkers?({class: "bookmark"})?.length
+                liElm.classList.add('bookmarked')
         #getGrammar
         #getLongTitle
         #getTitle
@@ -84,7 +87,7 @@ class BetterTabsView
     _addItem: (name, grammar) ->
         newLi = document.createElement('li')
         newLi.textContent = name
-        
+
         if grammar
             newLi.innerHTML += "<span style='float: right'>#{grammar}</span>"
 

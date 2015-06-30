@@ -33,6 +33,13 @@
     li.active.status-modified {
         color: darken(@text-color-modified, 15%);
     }
+
+    li.bookmarked:after {
+        content: "\f07b";
+        margin-left: 4px;
+        color: @background-color-info;
+        font-family: 'Octicons Regular';
+    }
 }
 
 ul.tab-bar .tab {
