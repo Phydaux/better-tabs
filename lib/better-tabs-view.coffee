@@ -31,7 +31,7 @@ class BetterTabsView
         activeItem = atom.workspace.getActivePaneItem()
         pathRepo = @_getRepo()
         for doc in docs
-            repoStatus = pathRepo.getPathStatus(doc.getPath?())
+            repoStatus = pathRepo?.getPathStatus(doc.getPath?())
 
             itemTitle = doc.getTitle()
             itemGrammar = ''
@@ -58,6 +58,8 @@ class BetterTabsView
                     liElm.classList.add('icon-file-text')
                 when 'ResultsPaneView'
                     liElm.classList.add('icon-search')
+                when 'DeprecationCopView'
+                    liElm.classList.add('icon-alert')
                 when 'MarkdownPreviewView'
                     liElm.classList.add('icon-markdown')
                 else
@@ -66,10 +68,10 @@ class BetterTabsView
             if doc.isModified?()
                 liElm.classList.add('modified')
 
-            if pathRepo.isStatusModified(repoStatus)
+            if pathRepo?.isStatusModified(repoStatus)
                 liElm.classList.add('status-modified')
 
-            if pathRepo.isStatusNew(repoStatus)
+            if pathRepo?.isStatusNew(repoStatus)
                 liElm.classList.add('status-added')
 
             if repoStatus is 4
