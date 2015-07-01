@@ -58,6 +58,8 @@ class BetterTabsView
                     liElm.classList.add('icon-file-text')
                 when 'ResultsPaneView'
                     liElm.classList.add('icon-search')
+                when 'MarkdownPreviewView'
+                    liElm.classList.add('icon-markdown')
                 else
                     liElm.classList.add('icon-primitive-dot')
 
