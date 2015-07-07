@@ -27,7 +27,9 @@ class BetterTabsView
     _createList: ->
         @_removeItems()
 
-        docs = atom.workspace.getPaneItems()
+        pane = atom.workspace.getActivePane()
+        docs = pane.items
+        
         activeItem = atom.workspace.getActivePaneItem()
         pathRepo = @_getRepo()
         for doc in docs
