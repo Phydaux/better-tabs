@@ -29,7 +29,7 @@ class BetterTabsView
 
         pane = atom.workspace.getActivePane()
         docs = pane.items
-        
+
         activeItem = atom.workspace.getActivePaneItem()
         pathRepo = @_getRepo()
         for doc in docs
@@ -64,6 +64,8 @@ class BetterTabsView
                     liElm.classList.add('icon-alert')
                 when 'MarkdownPreviewView'
                     liElm.classList.add('icon-markdown')
+                when 'IncompatiblePackagesComponent'
+                    liElm.classList.add('icon-package')
                 else
                     liElm.classList.add('icon-primitive-dot')
 
